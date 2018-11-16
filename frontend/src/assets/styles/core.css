@@ -61,9 +61,9 @@ button, .btn, submit {
   padding: 1rem 1.5rem;
   font-size: 1rem;
   cursor: pointer;
-  background: linear-gradient(135deg, #5fe2dc 0%, #0d5de4 100%); }
+  background: linear-gradient(135deg, #dcedc8 0%, #dcedc8 100%); }
   button:hover, .btn:hover, submit:hover {
-    background: linear-gradient(135deg, #0d5de4 0%, #5fe2dc 100%); }
+    background: linear-gradient(135deg, #dcedc8 0%, #dcedc8 100%); }
   button.secondary, .btn.secondary, submit.secondary {
     background: transparent;
     padding: .9rem 1.4rem;
@@ -185,9 +185,9 @@ button, .btn, submit {
   border-radius: 50%;
   background: #141C47;
   cursor: pointer;
-  background: linear-gradient(135deg, #5fe2dc 0%, #0d5de4 100%); }
+  background: linear-gradient(135deg, #5fe2dc 0%, #dcedc8 100%); }
   .layoutStandard .toggleCreate:hover {
-    background: linear-gradient(135deg, #0d5de4 0%, #5fe2dc 100%); }
+    background: linear-gradient(135deg, #dcedc8 0%, #5fe2dc 100%); }
   .layoutStandard .toggleCreate:before, .layoutStandard .toggleCreate:after {
     display: block;
     background: #ffffff;

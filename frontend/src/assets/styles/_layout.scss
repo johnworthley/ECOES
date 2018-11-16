@@ -15,9 +15,9 @@
     border-radius: 50%;
     background: #141C47;
     cursor: pointer;
-    background: linear-gradient(135deg,#5fe2dc 0%,#0d5de4 100%);
+    background: linear-gradient(135deg,#5fe2dc 0%,#dcedc8 100%);
     &:hover {
-      background: linear-gradient(135deg,#0d5de4 0%,#5fe2dc 100%);
+      background: linear-gradient(135deg,#dcedc8 0%,#5fe2dc 100%);
     }
     &:before, &:after {
       display: block;

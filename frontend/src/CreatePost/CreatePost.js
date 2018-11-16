@@ -31,7 +31,7 @@ class CreatePost extends Component {
             name='title'
             value={this.state.title}
             onChange={this.handleOnChange}
-            placeholder='Title'
+            placeholder='ECOES Title'
           />
           <textarea
             className='margin-bottom-15'
@@ -39,7 +39,7 @@ class CreatePost extends Component {
             value={this.state.content}
             onChange={this.handleOnChange}
             rows={4}
-            placeholder='Content'
+            placeholder='Description'
           />
           <input
             className='margin-bottom-15'
@@ -52,7 +52,7 @@ class CreatePost extends Component {
             onClick={this.createPost}
             type='submit'
             className='margin-right-15'
-          >Create Post</button>
+          >Create ECOES</button>
         </div>
       </div>
     )
