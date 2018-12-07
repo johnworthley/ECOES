@@ -5,9 +5,11 @@ function createPost (state, payload, blockInfo, context) {
       author: payload.data.author
     },
     author: payload.data.author,
-    title: payload.data.title,
-    content: payload.data.content,
-    tag: payload.data.tag
+    project: payload.data.project,
+    description: payload.data.description,
+    dateTime: payload.data.dateTime,
+    location: payload.data.location,
+    funding: payload.data.funding
   }
   context.socket.emit('createpost', post)
 }

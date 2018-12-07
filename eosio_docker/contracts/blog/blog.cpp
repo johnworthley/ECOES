@@ -15,7 +15,7 @@ public:
 
 
   // use ACTION macro so that eosio-cpp will add this as an action to the ABI
-  ACTION createpost(const uint64_t timestamp, const name author, const string &title, const string &content, const string &tag) {
+  ACTION createpost(const uint64_t timestamp, const name author, const string &project, const string &description, const string &dateTime, const string &location, const string &funding) {
     // check if authorized for author account
     // if you are not authorized then this action will be aborted
     // and the transaction will by rolled back - any modifications will be reset
@@ -38,7 +38,7 @@ public:
     });
   }
 
-  ACTION editpost(const uint64_t timestamp, const name author, const string &title, const string &content, const string &tag) {
+  ACTION editpost(const uint64_t timestamp, const name author, const string &project, const string &description, const string &dateTime, const string &location, const string &funding) {
     // get posts by secondary key
     auto post_index = _posts.get_index<name("getbyskey")>();
     uint128_t skey = static_cast<uint128_t>(author.value) << 64 | timestamp; 

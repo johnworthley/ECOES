@@ -11,9 +11,11 @@ try {
       author: String
     },
     author: String,
-    title: String,
-    content: String,
-    tag: String,
+    project: String,
+    description: String,
+    dateTime: String,
+    location: String,
+    funding: String,
     likes: {
       type: Number,
       default: 0

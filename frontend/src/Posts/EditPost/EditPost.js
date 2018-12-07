@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import TextField from "material-ui/TextField";
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
 
 class EditPost extends Component {
   state = {
-    title: this.props.post.title,
-    content: this.props.post.content,
-    tag: this.props.post.tag
+    project: this.props.post.project,
+    description: this.props.post.description,
+    dateTime: this.props.post.dateTime,
+    location: this.props.post.location,
+    funding: this.props.post.funding
   }
 
   handleOnChange = (event, field) => {
@@ -20,28 +27,45 @@ class EditPost extends Component {
     return (
       <div className='card-item'>
         <div className='padding-30'>
-          <input
-            className='margin-bottom-15'
-            name='title'
-            onChange={(e) => this.handleOnChange(e, 'title')}
-            value={this.state.title}
-            placeholder='Title'
+        <TextField
+          name="project"
+          floatingLabelText="Project"
+          value={this.state.project}
+          onChange={(e) => this.handleOnChange(e, 'project')}
+        />
+        <br />
+        <TextField
+          name="description"
+          floatingLabelText="Description"
+          value={this.state.description}
+          onChange={(e) => this.handleOnChange(e, 'description')}
+          rows={4}
+        />
+        <br />
+        <TextField
+        floatingLabelText="Date and Time"
+        type="datetime-local"
+        value={this.state.dateTime}
+        onChange={(e) => this.handleOnChange(e, 'dateTime')}
+      />
+        <br />
+        <TextField
+          name="location"
+          floatingLabelText="Location"
+          value={this.state.location}
+          onChange={(e) => this.handleOnChange(e, 'location')}
+        />
+        <br />
+        <FormControl >
+        <InputLabel htmlFor="adornment-amount">Funding</InputLabel>
+          <Input
+            name="funding"
+            value={this.state.funding}
+            onChange={(e) => this.handleOnChange(e, 'funding')}
+            startAdornment={<InputAdornment position="start">$</InputAdornment>}
           />
-          <textarea
-            className='margin-bottom-15'
-            name='content'
-            rows='6'
-            onChange={(e) => this.handleOnChange(e, 'content')}
-            value={this.state.content}
-            placeholder='Content'
-          />
-          <input
-            className='margin-bottom-15'
-            name='tag'
-            onChange={(e) => this.handleOnChange(e, 'tag')}
-            value={this.state.tag}
-            placeholder='Tag'
-          />
+        </FormControl>
+        <br />
           <button
             onClick={this.handlePostSave}
             type='submit'
@@ -71,9 +95,11 @@ EditPost.propTypes = {
       author: PropTypes.string.isRequired
     }),
     author: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
-    tag: PropTypes.string.isRequired,
+    project: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    dateTime: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    funding: PropTypes.string.isRequired,
     likes: PropTypes.number.isRequired
   }).isRequired,
   savePost: PropTypes.func.isRequired,

@@ -1,68 +1,85 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import TextField from "material-ui/TextField";
+import RaisedButton from "material-ui/RaisedButton";
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
 
-class CreatePost extends Component {
+
+export default class CreatePost extends React.Component {
   state = {
-    title: '',
-    content: '',
-    tag: ''
-  }
+    project: "",
+    description: "",
+    dateTime: "",
+    location: "",
+    funding: "",
+  };
+  
 
-  handleOnChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
+  handleOnChange = (event, field) => {
+    this.setState({ [field]: event.target.value })
   }
 
   createPost = e => {
     e.preventDefault()
     this.props.createPost({ ...this.state, likes: 0 })
     this.setState({
-      title: '',
-      content: '',
-      tag: ''
+      project: '',
+      description: '',
+      dateTime: '',
+      location: '',
+      funding: '',
     })
   }
 
-  render () {
+  render() {
     return (
-      <div className='createContainer padding-30'>
+        <div className='createContainer padding-30'>
         <div className='card-item padding-30'>
-          <input
-            className='margin-bottom-15'
-            name='title'
-            value={this.state.title}
-            onChange={this.handleOnChange}
-            placeholder='ECOES Title'
+        <TextField
+          name="project"
+          floatingLabelText="Project"
+          value={this.state.project}
+          onChange={(e) => this.handleOnChange(e, 'project')}
+        />
+        <br />
+        <TextField
+          name="description"
+          floatingLabelText="Description"
+          value={this.state.description}
+          onChange={(e) => this.handleOnChange(e, 'description')}
+          rows={4}
+        />
+        <br />
+        <TextField
+        floatingLabelText="Date and Time"
+        type="datetime-local"
+        value={this.state.dateTime}
+        onChange={(e) => this.handleOnChange(e, 'dateTime')}
+        rows={3}
+      />
+        <br />
+        <TextField
+          name="location"
+          floatingLabelText="Location"
+          value={this.state.location}
+          onChange={(e) => this.handleOnChange(e, 'location')}
+        />
+        <br />
+        <FormControl >
+        <InputLabel htmlFor="adornment-amount">Funding</InputLabel>
+          <Input
+            name="funding"
+            value={this.state.funding}
+            onChange={(e) => this.handleOnChange(e, 'funding')}
+            startAdornment={<InputAdornment position="start">$</InputAdornment>}
           />
-          <textarea
-            className='margin-bottom-15'
-            name='content'
-            value={this.state.content}
-            onChange={this.handleOnChange}
-            rows={4}
-            placeholder='Description'
-          />
-          <input
-            className='margin-bottom-15'
-            name='tag'
-            value={this.state.tag}
-            onChange={this.handleOnChange}
-            placeholder='Tag'
-          />
-          <button
-            onClick={this.createPost}
-            type='submit'
-            className='margin-right-15'
-          >Create ECOES</button>
+        </FormControl>
+        <br />
+        <RaisedButton label="Submit" onClick={e => this.createPost(e)} primary />
         </div>
       </div>
-    )
+    );
   }
 }
-CreatePost.displayName = 'CreatePost' // Tell React Dev Tools the component name
-
-// Assign Prop Types
-CreatePost.propTypes = {
-  createPost: PropTypes.func.isRequired
-}
-
-export default CreatePost

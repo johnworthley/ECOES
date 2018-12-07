@@ -1,4 +1,4 @@
-# EOSIO Demux Example
+# EOSIO Demux Boilerplate
 
 # Overview
 This Blog DApp demonstrates the eosio platform running a blockchain as a local single node test net with a simple DApp. This DApp allows users to create, edit, delete and like blog posts. This guide uses scripts, containing relevant commands, which will show you how to install, build and run the DApp, and by doing so will demonstrate:
@@ -47,8 +47,7 @@ In this section we provide a single command script to run all the commands neede
 The above command will execute the following in sequence:
 
 1. `first_time_setup.sh`
-2. `start_eosio_docker.sh`
-3. `start_mongodb_docker.sh`
+2. `start_mongodb_docker.sh`
 
 **To stop**, execute:
 ```sh
@@ -73,6 +72,11 @@ npm start
 ```sh
 cd frontend
 npm start
+```
+
+**To clear ports**
+```sh
+./restart.sh
 ```
 
 **To stop**, press `ctrl+c` on your keyboard

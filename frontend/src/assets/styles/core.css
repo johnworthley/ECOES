@@ -173,7 +173,8 @@ button, .btn, submit {
   transition: all .15s ease-out;
   max-height: 0;
   overflow: hidden;
-  padding: 0; }
+  padding: 0;
+  text-align: center; }
 
 .layoutStandard .toggleCreate {
   z-index: 99;
@@ -201,6 +202,7 @@ button, .btn, submit {
     transform: rotate(90deg); }
 
 .layoutStandard.createOpen .createContainer {
+  text-align: center;
   max-height: 471px;
   overflow: visible; }
   .layoutStandard.createOpen .createContainer .card-item {

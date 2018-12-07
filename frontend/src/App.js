@@ -1,14 +1,18 @@
-import React, { Component} from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
-import Home from './Home'
+import React, { Component } from 'react'
+import { BrowserRouter, Switch } from 'react-router-dom'
+import { LayoutRoute, MainLayout } from './components/Market/Layout'
+import { Home } from './pages'
+
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <Route path="/" component={Home} />
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <Switch>
+          <LayoutRoute exact path="/" layout={Home} component={Home} />
+        </Switch>
       </BrowserRouter>
-    );
+    )
   }
 }
 

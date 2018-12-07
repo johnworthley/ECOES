@@ -35,13 +35,15 @@ class Post extends Component {
         <div className={`card-item ${this.state.liked ? 'liked' : ''}`} key={this.props.post.pkey}>
           <div className='padding-30'>
             <div className='heart' onClick={() => { this.likePost(this.props.post) }} />
-            <h2 className='margin-top-0'>{this.props.post.title}</h2>
-            <p>{this.props.post.content}</p>
+            <h2 className='margin-top-0'>{this.props.post.project}</h2>
+            <p>{this.props.post.description}</p>
+            <p>{this.props.post.dateTime}</p>
+            <p>{this.props.post.funding}</p>
           </div>
           <div className='padding-30 card-footer grid-3'>
             <div className='detailAvatar'>{this.props.post.author}</div>
             <div className='detailHeart'>{this.props.post.likes}</div>
-            <div className='detailTag'>{this.props.post.tag}</div>
+            <div className='detailTag'>{this.props.post.location}</div>
           </div>
           <div className='padding-30 grid-2'>
             <div onClick={() => { this.props.deletePost(this.props.post) }} className='iconDelete' />
@@ -64,9 +66,11 @@ Post.propTypes = {
       author: PropTypes.string.isRequired
     }),
     author: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
-    tag: PropTypes.string.isRequired,
+    project: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    dateTime: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    funding: PropTypes.string.isRequired,
     likes: PropTypes.number.isRequired
   }).isRequired,
   editPost: PropTypes.func.isRequired,

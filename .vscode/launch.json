@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/frontend/src/Components/appBar.js"
+            "program": "${workspaceFolder}/frontend/src/components/appBar.js"
         }
     ]
 }

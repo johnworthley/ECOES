@@ -1,4 +1,4 @@
-import { Api, JsonRpc, JsSignatureProvider } from 'eosjs'
+import { Api, JsonRpc, JsSignatureProvider } from 'eosjs2'
 
 export default class EOSIOClient {
   constructor (contractAccount) {

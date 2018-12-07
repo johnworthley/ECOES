@@ -4,6 +4,8 @@
     max-height: 0;
     overflow: hidden;
     padding: 0;
+    text-align: center;
+
   }
   .toggleCreate {
     z-index: 99;
@@ -35,6 +37,7 @@
   }
   &.createOpen {
     .createContainer{
+      text-align: center;
       max-height: 471px;
       overflow: visible;
       .card-item {
