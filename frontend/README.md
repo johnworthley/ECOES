@@ -2,7 +2,7 @@
 
 ## Starting Front-End
 
-* npm install
+* yarn
 * npm start
 
 ## Running Tests

@@ -116,9 +116,10 @@ class Home extends Component {
 
   // Like a post
   likePost = async (post) => {
+    const {accountStore} = this.props;
     try {
       await this.eosio.transaction(
-        process.env.REACT_APP_EOSIO_ACCOUNT,
+        accountStore.loginAccountInfo.account_name,
         'likepost', {
           timestamp: post._id.timestamp,
           author: post._id.author

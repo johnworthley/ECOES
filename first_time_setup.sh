@@ -23,7 +23,7 @@ fi
 echo "=== npm install packpage for frontend react app ==="
 # change directory to ./frontend
 cd "./frontend"
-npm install
+yarn
 cd "../"
 
 # set up node_modules for backend
