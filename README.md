@@ -1,14 +1,14 @@
 # Mainnet-deployable EOS Boilerplate DApp
 
 # Overview
-Create, edit, delete, and like posts
+Dapp to Create, edit, delete, and like posts
 
-- Node.js server with [Demux](https://github.com/EOSIO/demux-js) to monitor the state of the blockchain
-- MongoDB database to store DApp data
-- Reactjs UI bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
-- UI ->EOS mainnet connection with [eosjs](https://github.com/EOSIO/eosjs)
+- Node.js server [Demux](https://github.com/EOSIO/demux-js) monitors the state of the blockchain
+- MongoDB database stores DApp data
+- Reactjs UI
+- EOSJS UI ->EOS [eosjs](https://github.com/EOSIO/eosjs)
 
- [Demux](https://github.com/EOSIO/demux-js) listens to and reads events from smart contract actions. MongoDB database stores data, thus reducing the cost of RAM required by storing into the contract's multi index table. Smart contract checks authorization. Demux stores data.
+ [Demux](https://github.com/EOSIO/demux-js) listens to and reads events from smart contract actions. MongoDB database stores data in the Docker container, thus reducing the cost of RAM required by storing into the contract's multi index table.
 
 **Do not upload private keys in .env files**
 
@@ -46,12 +46,16 @@ Choose the testnet or mainnet
 
 **API Endpoints**
 
+```sh
 Jungle Test Net: https://jungle.eosio.cr:443
 Mainnet: https://api.eosnewyork.io:443
+```
 
-Add links to:
+```sh
+Add link to:
 backend/.env
 frontend/.env 
+```
 
 In separate terminals execute the following to start the React app and the Node.js server
 
@@ -233,4 +237,4 @@ If you are having issues running any of the docker containers you may want to tr
 - `docker volume prune`
 - `docker image prune`
 
-# Boilerplate Forked from https://github.com/EOSIO/eosio-project-demux-example.git and simplified for mainnet use
+Boilerplate Forked from https://github.com/EOSIO/eosio-project-demux-example.git and simplified for mainnet use
