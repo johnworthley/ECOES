@@ -46,13 +46,14 @@ Choose the testnet or mainnet
 
 **API Endpoints**
 
+Choose one
 ```sh
 Jungle Test Net: https://jungle.eosio.cr:443
 Mainnet: https://api.eosnewyork.io:443
 ```
+Add link to:
 
 ```sh
-Add link to:
 backend/.env
 frontend/.env 
 ```
@@ -110,8 +111,6 @@ npm start
 This script will open a browser session connecting to http://localhost:3000/ showing the React app. You can try to add, remove, or edit the sample blog posts using one of the accounts in [accounts.json](https://github.com/EOSIO/eosio-project-demux-example/blob/master/eosio_docker/scripts/accounts.json) and modifying the **frontend/.env** for `REACT_APP_EOSIO_ACCOUNT` and `REACT_APP_EOSIO_PRIVATE_KEY` with the name and private key of the desired account. This React app will interact with the smart contract by broadcasting transactions, which are written to the blockchain by our locally running nodeos.
 
 ## Stopping DApp
-
-
 
 **Stopping MongoDB**
 
@@ -178,7 +177,6 @@ eosio-project-demux-example // project directory
 
 The DApp consists of four parts. The MongoDB database, backend Node.js app, and frontend React app. These can be found in:
 
-
 - mongodb_docker
     - mongodb database
         - mongodb://127.0.0.1/blog_platform
@@ -211,8 +209,6 @@ The smart contract can be found at `eosio_docker/contracts/blog/blog.cpp`, you c
 ## Docker commands
 
 If you are more familiar with docker, you could use the docker commands below to have better control with the whole environment. Below are the explanations of each of the commands:
-
-
 
 
 Stop the container (see below troubleshoot section to see how to pause and continue the blockchain):
