@@ -1,5 +1,5 @@
 import { decorate, observable, action } from 'mobx'
-import eosAgent from '../EosAgent'
+import eosAgent from '../utils/EosAgent'
 import ApiServerAgent from '../ApiServerAgent'
 import { loginUserMutation } from '../graphql/mutation/user'
 
@@ -55,17 +55,14 @@ class AccountStore {
     if (result) {
       await this.loadAccountInfo()
 
-      console.log('a')
       this.isLogin = true
       this.loginStateObserveble.set(true)
-      console.log('b')
 
       // async
       ApiServerAgent.mutate({
         mutation: loginUserMutation,
         variables: { account: this.loginAccountInfo.account_name }
       })
-      console.log('after mutate')
 
       return true
     } else {

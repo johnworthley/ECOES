@@ -1,5 +1,5 @@
 import Eos from 'eosjs'
-import * as Values from './constants/Values'
+import * as Values from '../constants/Values'
 
 const singleton = Symbol()
 const singletonEosAgent = Symbol()
@@ -37,6 +37,19 @@ class EosAgent {
 
   isInitScatter = () => {
     return this._initialized
+  }
+
+  initEosAgent = id => {
+    if (id) {
+      this.scatter.useIdentity(id)
+      const loginAccount = this.scatter.identity.accounts.find(
+        acc => acc.blockchain === Values.NETWORK.blockchain
+      )
+      this.scatterAccount = loginAccount
+      this.identity = id
+      this.eos = this.scatter.eos(Values.NETWORK, Eos, Values.CONFIG)
+      return true
+    }
   }
 
   initEosAgent = id => {
@@ -193,6 +206,39 @@ class EosAgent {
     }
 
     return await this.eos.transaction(cb)
+    
+  }
+
+  transaction = async ( actor, action, data, id) =>{
+    if (id) {
+      this.scatter.useIdentity(id)
+      const loginAccount = this.scatter.identity.accounts.find(
+        acc => acc.blockchain === Values.NETWORK.blockchain
+      )
+      this.scatterAccount = loginAccount
+      this.identity = id
+      this.eos = this.scatter.eos(Values.NETWORK, Eos, Values.CONFIG)
+      return this.eos.transact({
+        actions: [
+          {
+            account: this.contractAccount,
+            name: action,
+            authorization: [
+              {
+                actor,
+                permission: 'active'
+              }
+            ],
+            data: {
+              ...data
+            }
+          }
+        ]
+      }, {
+        blocksBehind: 3,
+        expireSeconds: 30
+      })
+    }
   }
 
   createTransactionWithContract = async (contract, cb) => {

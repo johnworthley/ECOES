@@ -10,6 +10,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ECOES from '../assets/images/ECOES.png'
 import { compose } from 'recompose'
 import { inject, observer } from 'mobx-react'
+import eosAgent from '../utils/EosAgent'
 
 
 class Home extends Component {
@@ -23,7 +24,6 @@ class Home extends Component {
   constructor (props) {
     super(props)
     const contractAccount = process.env.REACT_APP_EOSIO_CONTRACT_ACCOUNT
-    this.eosio = new EOSIOClient(contractAccount)
     this.io = new IOClient()
     this.accountStore = this.props.accountStore
   }
@@ -66,8 +66,9 @@ class Home extends Component {
         author: accountStore.loginAccountInfo.account_name
       }
 
-      await this.eosio.transaction(
-        accountStore.loginAccountInfo.account_name,
+      await eosAgent.transaction(
+        //process.env.REACT_APP_EOSIO_ACCOUNT, // contractaccount create action
+        accountStore.loginAccountInfo.account_name, //User creates action
         'createpost', {
           timestamp: newPost._id.timestamp,
           author: newPost._id.author,
@@ -84,7 +85,7 @@ class Home extends Component {
   // Edit a post
   editPost = async (post) => {
     try {
-      await this.eosio.transaction(
+      await eosAgent.transaction(
         'editpost',
         {
           timestamp: post._id.timestamp,
@@ -101,7 +102,7 @@ class Home extends Component {
   // Delete a post
   deletePost = async (post) => {
     try {
-      await this.eosio.transaction(
+      await eosAgent.transaction(
         'deletepost',
         {
           timestamp: post._id.timestamp,
@@ -117,8 +118,9 @@ class Home extends Component {
   // Like a post
   likePost = async (post) => {
     const {accountStore} = this.props;
+    
     try {
-      await this.eosio.transaction(
+      await eosAgent.transaction(
         accountStore.loginAccountInfo.account_name,
         'likepost', {
           timestamp: post._id.timestamp,
@@ -139,8 +141,6 @@ class Home extends Component {
 
   render () {
     const { accountStore } = this.props
-    console.log(accountStore)
-
     
     return (
       <div className="app">
