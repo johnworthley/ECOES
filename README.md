@@ -192,8 +192,6 @@ Users interact with the UI in client and sign transactions in frontend. The sign
 
 ## Docker usage
 
-
-```
 We have already set the container working directory to `/opt/eosio/bin/`, you could run cleos command in this directory directly. For documentation of cleos: https://developers.eos.io/eosio-nodeos/docs/cleos-overview
 
 
