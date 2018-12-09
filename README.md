@@ -6,6 +6,7 @@ Dapp to Create, edit, delete, and like posts
 - Node.js server [Demux](https://github.com/EOSIO/demux-js) monitors the state of the blockchain
 - MongoDB database stores DApp data
 - Reactjs UI
+- Scatter Wallet (Interoperable with EOS and ETH Blockchains)
 - EOSJS UI ->EOS [eosjs](https://github.com/EOSIO/eosjs)
 
  [Demux](https://github.com/EOSIO/demux-js) listens to and reads events from smart contract actions. MongoDB database stores data in the Docker container, thus reducing the cost of RAM required by storing into the contract's multi index table.
