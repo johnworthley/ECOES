@@ -51,5 +51,4 @@ echo "=== npm install package for backend react app ==="
 cd "./backend"
 npm install
 cd "../"
-
-cleos 
+ 

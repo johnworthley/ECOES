@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import EOSIOClient from '../utils/eosio-client'
 import IOClient from '../utils/io-client'
 import { updatePostsForCreateAndEdit, updatePostsForLike, updatePostsForDelete } from '../utils/posts-updater'
 import CreatePost from '../CreatePost/CreatePost'
