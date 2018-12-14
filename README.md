@@ -11,14 +11,6 @@ Dapp to Create, edit, delete, and like posts
 
  [Demux](https://github.com/EOSIO/demux-js) listens to and reads events from smart contract actions. MongoDB database stores data in the Docker container, thus reducing the cost of RAM required by storing into the contract's multi index table.
 
-**Do not upload private keys in .env files**
-
-Clone the repository:w
-```sh
-git clone https://github.com/johnworthley/ECOES
-```
- http endpoints 
-
 # Quick start - Run the DApp
 
 **Clear Ports**
@@ -40,23 +32,6 @@ The above command will execute the following in sequence:
 ```sh
 docker stop eosio_blog_container
 docker stop mongo_blog_container
-```
-
-## Blockchain connection
-Choose the testnet or mainnet
-
-**API Endpoints**
-
-Choose one
-```sh
-Jungle Test Net: https://jungle.eosio.cr:443
-Mainnet: https://api.eosnewyork.io:443
-```
-Add link to:
-
-```sh
-backend/.env
-frontend/.env 
 ```
 
 In separate terminals execute the following to start the React app and the Node.js server
