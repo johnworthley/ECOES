@@ -1,12 +1,12 @@
 import Eos from 'eosjs'
 import * as Values from '../constants/Values'
+import ScatterJS from "scatterjs-core"
+//import { Api, JsonRpc } from "eosjs2"
 
 const singleton = Symbol()
 const singletonEosAgent = Symbol()
 
 const ENDPOINT = Values.NETWORK.protocol + '://' + Values.NETWORK.host + ':' + Values.NETWORK.port
-
-console.log(ENDPOINT)
 
 class EosAgent {
   constructor(eosAgent) {
@@ -19,7 +19,13 @@ class EosAgent {
     this.identity = null
     this.scatterAccount = null
 
-  }
+    
+    this.eos = Eos({
+      httpEndpoint: ENDPOINT,
+      chainId: Values.NETWORK.chainId
+    })
+
+}
 
   static get instance() {
     if (!this[singleton]) {
@@ -37,19 +43,6 @@ class EosAgent {
 
   isInitScatter = () => {
     return this._initialized
-  }
-
-  initEosAgent = id => {
-    if (id) {
-      this.scatter.useIdentity(id)
-      const loginAccount = this.scatter.identity.accounts.find(
-        acc => acc.blockchain === Values.NETWORK.blockchain
-      )
-      this.scatterAccount = loginAccount
-      this.identity = id
-      this.eos = this.scatter.eos(Values.NETWORK, Eos, Values.CONFIG)
-      return true
-    }
   }
 
   initEosAgent = id => {
@@ -106,14 +99,6 @@ class EosAgent {
     return this.eos.getInfo({})
   }
 
-  /**
-   * query = {
-      json: true,
-      code: 'code',
-      scope: 'scope',
-      table: 'table name'
-    }
-   */
   getTableRows = async query => {
     if (!this.eos) {
       return
@@ -209,23 +194,41 @@ class EosAgent {
     
   }
 
-  transaction = async ( actor, action, data, id) =>{
-    if (id) {
-      this.scatter.useIdentity(id)
-      const loginAccount = this.scatter.identity.accounts.find(
-        acc => acc.blockchain === Values.NETWORK.blockchain
-      )
-      this.scatterAccount = loginAccount
-      this.identity = id
-      this.eos = this.scatter.eos(Values.NETWORK, Eos, Values.CONFIG)
-      return this.eos.transact({
+
+  transaction = async ( actor, action, data) =>{
+      return this.eos.transaction({
         actions: [
           {
-            account: this.contractAccount,
+            account: 'cooperbaxter',
             name: action,
             authorization: [
               {
-                actor,
+              actor: actor,
+              permission: 'active'
+              }
+            ],
+            data: {
+              ...data
+            }
+          }
+        ]
+      }, {  
+        blocksBehind: 3,
+        expireSeconds: 30
+      })
+  }
+
+  /*
+  transaction = async ( actor, action, data, id) =>{
+      console.log(this.eos)
+      return this.eos.transaction({
+        actions: [
+          {
+            account: 'cooperbaxter',
+            name: 'createpost',
+            authorization: [
+              {
+                actor: 'cooperbaxter',
                 permission: 'active'
               }
             ],
@@ -238,8 +241,7 @@ class EosAgent {
         blocksBehind: 3,
         expireSeconds: 30
       })
-    }
-  }
+    }*/
 
   createTransactionWithContract = async (contract, cb) => {
     if (!this.eos) {

@@ -11,7 +11,6 @@ import { compose } from 'recompose'
 import { inject, observer } from 'mobx-react'
 import eosAgent from '../utils/EosAgent'
 
-
 class Home extends Component {
 
   state = {
@@ -66,9 +65,9 @@ class Home extends Component {
       }
 
       await eosAgent.transaction(
-        //process.env.REACT_APP_EOSIO_ACCOUNT, // contractaccount create action
         accountStore.loginAccountInfo.account_name, //User creates action
-        'createpost', {
+        'createpost', 
+        {
           timestamp: newPost._id.timestamp,
           author: newPost._id.author,
           ...post

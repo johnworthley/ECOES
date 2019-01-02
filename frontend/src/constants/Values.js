@@ -9,10 +9,15 @@ export const API_SERVER_REST_URI = 'https://graph.everyeos.com'
 export const actionPerPage = 1000
 
 const protocol = 'https'
+const host = 'api.eosdetroit.io'
+const port = 443
+const chainId = 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
+/*
+const protocol = 'https'
 const host = 'user-api.eoseoul.io'
 const port = 443
 const chainId = 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
-
+*/
 export const requiredFields = {
   accounts: [
     {
@@ -53,16 +58,6 @@ export const EOSIO_SERVER_ERROR_CPU_LIMIT = 3080004
 
 export const ORDER_PAGE_LIMIT = 10
 
-export const ORDER_TYPE_BUY = 'BUY'
-export const ORDER_TYPE_SELL = 'SELL'
-export const ORDER_STATUS_NOT_DEAL = 'NOT_DEAL'
-export const ORDER_STATUS_PARTIAL_DEALED = 'PARTIAL_DEALED'
-export const ORDER_STATUS_ALL_DEALED = 'ALL_DEALED'
-export const ORDER_STATUS_CANCELLED = 'CANCELLED'
-export const ORDER_DETAIL_DEAL_STATUS_DEAL = 'DEAL'
-export const ORDER_DETAIL_DEAL_STATUS_CANCELLED = 'CANCELLED'
-export const ORDER_DETAIL_TRANSFER_STATUS_WAIT = 'WAIT'
-export const ORDER_DETAIL_TRANSFER_STATUS_DONE = 'DONE'
 export const PAGE_SIZE_TEN = 10
 export const PAGE_SIZE_TWENTY = 20
 export const PAGE_SIZE_THIRTY = 30
